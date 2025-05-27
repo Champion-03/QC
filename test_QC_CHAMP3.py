@@ -55,17 +55,17 @@ from io import BytesIO
 sheet_id = "1ec1BJmRSDuDkFz61dCBB9Dd-8c1DxtTVMcffXOw5yXE"
 sheet_url_export = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=xlsx"
 
-    response = requests.get(sheet_url_export)
-    xls = pd.ExcelFile(BytesIO(response.content), engine="openpyxl")
+response = requests.get(sheet_url_export)
+xls = pd.ExcelFile(BytesIO(response.content), engine="openpyxl")
 
 
 
-    brush_numbers = list(range(1, 33))
-    upper_rates, lower_rates = {n:{} for n in brush_numbers}, {n:{} for n in brush_numbers}
-    rate_fixed_upper = set()
-    rate_fixed_lower = set()
-    yellow_mark_upper = {}
-    yellow_mark_lower = {}
+brush_numbers = list(range(1, 33))
+upper_rates, lower_rates = {n:{} for n in brush_numbers}, {n:{} for n in brush_numbers}
+rate_fixed_upper = set()
+rate_fixed_lower = set()
+yellow_mark_upper = {}
+yellow_mark_lower = {}
 
     # Step 1: Calculate rates per sheet
     for sheet in selected_sheets:
@@ -76,14 +76,14 @@ sheet_url_export = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?fo
             continue
         df = xls.parse(sheet, skiprows=2, header=None)
 
-        lower_df = df.iloc[:, 0:3]
-        lower_df.columns = ["No_Lower", "Lower_Previous", "Lower_Current"]
-        lower_df = lower_df.apply(pd.to_numeric, errors='coerce').dropna()
+lower_df = df.iloc[:, 0:3]
+lower_df.columns = ["No_Lower", "Lower_Previous", "Lower_Current"]
+lower_df = lower_df.apply(pd.to_numeric, errors='coerce').dropna()
 
-        upper_df = df.iloc[:, 4:6]
-        upper_df.columns = ["Upper_Current", "Upper_Previous"]
-        upper_df = upper_df.apply(pd.to_numeric, errors='coerce').dropna()
-        upper_df["No_Upper"] = range(1, len(upper_df) + 1)
+upper_df = df.iloc[:, 4:6]
+upper_df.columns = ["Upper_Current", "Upper_Previous"]
+upper_df = upper_df.apply(pd.to_numeric, errors='coerce').dropna()
+upper_df["No_Upper"] = range(1, len(upper_df) + 1)
 
         for n in brush_numbers:
             u_row = upper_df[upper_df["No_Upper"] == n]
