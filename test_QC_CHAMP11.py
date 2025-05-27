@@ -24,8 +24,7 @@ page = st.sidebar.radio("📂 เลือกหน้า", [
     "📝 กรอกข้อมูลแปลงถ่านเพิ่มเติม",
     "📈 พล็อตกราฟตามเวลา (แยก Upper และ Lower)"])
 
-# https://docs.google.com/spreadsheets/d/1cZ93K_ndX-8V4xX5lD7crCIZFaiAO5UuMsBMfTVbg-E/edit?usp=sharing
-
+# https://docs.google.com/spreadsheets/d/1ec1BJmRSDuDkFz61dCBB9Dd-8c1DxtTVMcffXOw5yXE/edit?usp=sharing
 # ------------------ PAGE 1 ------------------
 if page == "📊 หน้าแสดงผล rate และ ชั่วโมงที่เหลือ":
     st.title("🛠️ วิเคราะห์อัตราสึกหรอและชั่วโมงที่เหลือของ Brush")
@@ -34,7 +33,7 @@ if page == "📊 หน้าแสดงผล rate และ ชั่วโ�
     service_account_info = st.secrets["gcp_service_account"]
     creds = Credentials.from_service_account_info(service_account_info, scopes=["https://www.googleapis.com/auth/spreadsheets"])
     gc = gspread.authorize(creds)
-    sheet_url = "https://docs.google.com/spreadsheets/d/1cZ93K_ndX-8V4xX5lD7crCIZFaiAO5UuMsBMfTVbg-E/edit?usp=sharing"
+    sheet_url = "https://docs.google.com/spreadsheets/d/1ec1BJmRSDuDkFz61dCBB9Dd-8c1DxtTVMcffXOw5yXE/edit?usp=sharing"
     sh = gc.open_by_url(sheet_url)
 
     sheet_names = [ws.title for ws in sh.worksheets()]
@@ -50,7 +49,7 @@ if page == "📊 หน้าแสดงผล rate และ ชั่วโ�
     import requests
     from io import BytesIO
 
-    sheet_id = "1cZ93K_ndX-8V4xX5lD7crCIZFaiAO5UuMsBMfTVbg-E"
+    sheet_id = "1ec1BJmRSDuDkFz61dCBB9Dd-8c1DxtTVMcffXOw5yXE"
     sheet_url_export = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=xlsx"
 
     response = requests.get(sheet_url_export)
