@@ -49,7 +49,7 @@ if page == "📊 หน้าแสดงผล rate และ ชั่วโ�
     import requests
     from io import BytesIO
 
-    sheet_id = "1ec1BJmRSDuDkFz61dCBB9Dd-8c1DxtTVMcffXOw5yXE"
+    sheet_id = "ec1BJmRSDuDkFz61dCBB9Dd-8c1DxtTVMcffXOw5yXE"
     sheet_url_export = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=xlsx"
 
     response = requests.get(sheet_url_export)
@@ -408,7 +408,7 @@ elif page == "📝 กรอกข้อมูลแปลงถ่านเพ�
     from io import BytesIO
     import requests
 
-    sheet_id = "1ec1BJmRSDuDkFz61dCBB9Dd-8c1DxtTVMcffXOw5yXE"
+    sheet_id = "ec1BJmRSDuDkFz61dCBB9Dd-8c1DxtTVMcffXOw5yXE"
     url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=xlsx"
     response = requests.get(url)
 
