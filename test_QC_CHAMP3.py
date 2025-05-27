@@ -42,13 +42,10 @@ if page == "📊 หน้าแสดงผล rate และ ชั่วโ�
         sheet_names.remove("Sheet1")
         sheet_names = ["Sheet1"] + sheet_names
 
-    if len(sheet_names) == 0:
-    st.warning("📂 ไม่มี Sheet ในไฟล์ กรุณาตรวจสอบไฟล์.")
-    st.stop()
-else:
     max_sheet = len(sheet_names)
-    default_value = min(2, max_sheet)  # ป้องกันค่า default เกิน max
-    sheet_count = st.number_input("📌 เลือกจำนวน Sheet ที่ต้องใช้", min_value=1, max_value=max_sheet, value=default_value)
+default_value = min(2, max_sheet)  # ป้องกันค่า default เกิน max
+sheet_count = st.number_input("📌 เลือกจำนวน Sheet ที่ต้องใช้", min_value=1, max_value=max_sheet, value=default_value)
+
 
     
 
